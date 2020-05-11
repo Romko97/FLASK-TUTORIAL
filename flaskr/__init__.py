@@ -30,3 +30,16 @@ def create_app(test_config=None):
     app.register_blueprint(auth.bp)
 
     return app
+
+"""
+. venv/bin/activate
+export FLASK_APP=flaskr
+export FLASK_ENV=developer
+flask run
+
+"""
+"""
+git status
+git add .
+git commit -m "
+"""

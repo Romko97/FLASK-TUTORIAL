@@ -8,8 +8,8 @@ bp = Blueprint('auth',__name__, url_prefix='/auth')
 @bp.route('/register', methods=('GET', 'POST'))
 def register():
     if request.method == 'POST':
-        username = request.from['username']
-        password = request.from['password']
+        username = request.form['username']
+        password = request.form['password']
         db = get_db()
         error = None
 
@@ -20,7 +20,7 @@ def register():
         elif db.execute(
             'SELECT id FROM user WHERE username = ?', (username,)
         ).fetchone() is not None:
-        error = f'User {username} is already registered.'
+            error = f'User {username} is already registered.'
         
         if error is None:
             db.execute(
