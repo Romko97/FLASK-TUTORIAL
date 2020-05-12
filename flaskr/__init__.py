@@ -38,7 +38,7 @@ def create_app(test_config=None):
 """
 . venv/bin/activate
 export FLASK_APP=flaskr
-export FLASK_ENV=developer
+export FLASK_ENV=development
 flask run
 
 """

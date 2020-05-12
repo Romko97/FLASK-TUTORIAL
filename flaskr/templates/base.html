@@ -6,22 +6,35 @@
     <h1>Flask</h1>
     <ul>
         {% if g.user %}
-            <li><samp> {{ g.user['username'] }}</samp>
-            <li><a href="{{ url_for('auth.logout') }}"</li>Log Out</a>
+            <li>Welcome</li>
+            <li><samp>{{g.user['username'] }}</samp>
+            <li><button><a href="{{ url_for('auth.logout') }}"</li>Log Out</a></button>
         {% else %}
-            <li><a href="{{ url_for('auth.register') }}">Register</a>
-            <li><a href="{{ url_for('auth.login') }}">Log In</a>
+            <li><button><a href="{{ url_for('auth.register') }}">Register</a></button>
+            <li><button><a href="{{ url_for('auth.login') }}">Log In</a></button>
         {% endif %}
     </ul>
 </nav>
 <section class="content">
     <header>
-        {% block header %}{% endblock %}
+        {% block header %}
+        
+        {% endblock %}
     </header>
-    {% for message in get_flashed_messages() %}
-    <div class="flash">{{ message }}</div>
-    {% endfor %}
-    {% block content %}{% endblock %}
-    <h5><a href="https://www.facebook.com/Ukraine47">Developer - Roman Halychanivskyi </a></h5>
-    <h5>Усі права захищені =) </h5>
+        {% for message in get_flashed_messages() %}
+            <div class="flash">{{ message }}</div>
+        {% endfor %}
+        {% block content %}
+        
+        {% endblock %}
 </section>
+<footer>
+    <div>
+        <h5><a href="https://www.facebook.com/Ukraine47">Developer - Roman Halychanivskyi </a></h5>
+        <h5>Усі права захищені =) </h5>
+    </div>
+    <div>
+        <h3>Тут може бути ваша реклама =) </h3>
+        <button></button>
+    </div>
+</footer>
