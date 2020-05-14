@@ -17,20 +17,21 @@ def test_register(client, app):
             " select * from user where username = 'a' ",
         ).fetchone() is not None    
 
-
-@pytest.mark.parametrize(('username', 'password', 'message'), (
+# tells Pytest to run the same test function with different arguments. 
+#You use it here to test different invalid input and error messages without writing the same code three times.
+@pytest.mark.parametrize(('username', 'password', 'message'), 
+(
     ('', '', b'Username is required.'),
     ('a', '', b'Password is required.'),
     ('test', 'test', b'already registered'),
-)) # tells Pytest to run the same test function with different arguments. 
-#You use it here to test different invalid input and error messages without writing the same code three times.
+))
 def test_register_validate_input(client, username, password, message):
     response = client.post(
         '/auth/register',
         data={'username': username, 'password': password}
     )
     assert message in response.data
-    #contains the body of the response as bytes. 
+    # $ python setup.py bdist_wheelcontains the body of the response as bytes. 
     # If you expect a certain value to render 
     # on the page, check that it’s in data.
 
